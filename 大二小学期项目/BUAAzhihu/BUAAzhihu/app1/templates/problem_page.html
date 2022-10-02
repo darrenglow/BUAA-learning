@@ -1,0 +1,198 @@
+{% extends 'daohanglan.html' %}
+
+{% block title %}
+问题界面
+{% endblock title %}
+
+{% block style %}
+.content_container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 1030px;
+}
+
+.fixed_mianban{
+  position: fixed;
+  right: 215px;
+}
+
+.question_card{
+  background-color: white;
+  width: 100%;
+  padding-left: auto;
+  padding-right: auto;
+  margin-top: 0px;
+  border-bottom: 1px solid #f0f2f7;
+}
+.question_card a{
+  text-decoration: none;
+}
+.username{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.title_color{
+  color: black;
+}
+.question_title{
+  font-size:25px;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 10px 10px 5px 10px;
+}
+
+.question_card .question_title a:hover{
+  color: #625199;
+}
+
+.date{
+  display: inline-block;
+  margin-right: 10px;
+}
+.answer{
+  font-size:15px;
+  padding:  0px 10px;
+}
+.answer_color{
+  color:black;
+}
+.question_card .answer a:hover{
+  color: grey;
+}
+
+.product-buyer-name {
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+
+.question_intro{
+  font-size:15px;
+  font-weight: 400;
+  margin-top: 10px;
+  padding: 10px 10px 5px 10px;
+}
+
+{% endblock style %}
+
+{% block content %}
+  <div class="content_container">
+    <div class="row">
+      <div class="col-md-10" style="height: 1000px; margin-left: 100px;"> 
+        
+        <div class="question_card clearfix">
+          <div class="col-md-8">
+            <i class="fa fa-user-circle" aria-hidden="true" style="margin-left: 10px"></i>
+            <div class="username">
+              {{problem.asker}} 于
+            </div>
+            <div class="date">
+              {{problem.ask_time|date:"Y-m-d"}} 提出
+            </div>
+            <div class="question_title">
+              {{problem.title}}
+            </div>
+            <div class="question_intro">
+              补充描述：<div style="color:black">{{problem.ask_intro}}</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div style="font-size: 25px; margin-top: 40px;">关注数：{{followers}}</div>
+            <div style="font-size: 25px; ">回答数：{{answers_num}}</div>
+          </div>
+        </div>
+        <div style=" display: inline-block"><button type="button" class="btn btn-primary" id="btn" style="margin-top: 10px;" >我要回答</button></div>
+        <div style=" display: inline-block"><button type="button" class="btn btn-default" id="guanzhu" style="margin-top: 10px">关注问题</button></div>
+        <div>
+          <form method="POST">
+            {% csrf_token %}
+            <textarea name="answer_sheet" id="huidakuang" cols="90" rows="10"></textarea>
+            <button type="submit" class="btn btn-success" id="sub_btn" style="margin-top:10px; position:relative">提 交</button>
+          </form>
+        </div>
+        {% for answer in  answers %}
+          <div class="question_card clearfix" style="margin-top:10px;">
+            <i class="fa fa-user-circle" aria-hidden="true" style="margin-left: 10px"></i>
+            <div class="username">
+              {{answer.author}} 于
+            </div>
+            <div class="date">
+              {{answer.ans_time|date:"Y-m-d"}} 回答
+            </div>
+            <div class="question_intro">
+              <a href="/{{answer.thisask.id}}/problem/{{answer.id}}/answer"><div style="color:black">{{answer.ans_content}}</div></a>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+      
+    </div>
+  </div>
+
+  <input type="hidden" value="{{focus_status}}" id="guanzhu_status" />
+{% endblock content %}
+
+{% block script %}
+  <script>
+    $(function(){
+      if($("#guanzhu_status").val() == "True"){
+        $("#guanzhu").attr("class", "btn-primary btn");
+        $("#guanzhu").text("已关注");
+      }
+      else{
+        $("#guanzhu").attr("class", "btn-default btn");
+        $("#guanzhu").text("关注问题");
+      }
+
+      $("#changeclass").removeClass();
+      $("#changeclass2").addClass("active");
+      $("#huidakuang").hide();  // 默认隐藏状态
+      $("#sub_btn").hide();
+      $("#btn").click(function() {
+          $("#huidakuang").toggle('fast');  // 改变显隐状态
+          $("#sub_btn").toggle('fast');
+          $("#btn").text($("#btn").text()=="我要回答"?"我不想回答了":"我要回答"); // 改变按钮的文字说明
+      })
+
+      $("#guanzhu").click(function () {
+        if($(this).text() == "关注问题"){
+          $(this).attr("class", "btn-primary btn");
+          $(this).text("已关注");
+          $.ajax({
+            url: '/problem/follow/',
+            type: "post",
+            data: {
+                problem_id: {{problem.id}}
+            },
+            dataType: "JSON",
+            success: function (res) {
+                console.log(res);
+                location.reload();
+            }
+        })
+        }
+        else{
+          $(this).attr("class", "btn-default btn");
+          $(this).text("关注问题");
+          $.ajax({
+            url: '/problem/follow/cancel/',
+            type: "post",
+            data: {
+                problem_id: {{problem.id}}
+            },
+            dataType: "JSON",
+            success: function (res) {
+                console.log(res);
+                location.reload();
+            }
+          })
+        }
+          
+      })
+    })
+  </script>
+{% endblock script %}

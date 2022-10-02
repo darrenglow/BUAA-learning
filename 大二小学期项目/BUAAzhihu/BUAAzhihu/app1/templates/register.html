@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+    <style>
+        .board {
+            width: 500px;
+            height: 600px;
+            border: 1px solid #dddddd;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 60px;
+            padding: 20px 40px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px white;
+            background-color: white;
+        }
+
+    
+        .center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <body background="../static/login-bg.jpeg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+    background-attachment: fixed;">
+    <div class="board">
+        <h1 class="center" style="font-weight: 550;">用户注册</h1>
+        <form method='POST' novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                <label>{{field.label}}</label>
+                {{ field }}
+                <span style="color: red">{{ field.errors.0 }}</span>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success">注 册</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.js' %}"></script>
+    </body>
+</html>

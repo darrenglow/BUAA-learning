@@ -1,0 +1,78 @@
+{% extends 'daohanglan.html' %}
+{% block style %}
+  .content_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1030px;
+  }
+
+  .fixed_mianban{
+    position: fixed;
+    right: 215px;
+  }
+
+  .question_card{
+    background-color: white;
+    width: 100%;
+    height: 80px;
+    padding-left: auto;
+    padding-right: auto;
+    margin-top: 0px;
+    border-bottom: 1px solid #f0f2f7;
+  }
+
+  .question_title{
+    font-size:20px;
+    font-weight: 600;
+  }
+
+  .answer{
+    font-size:17px;
+  }
+
+  <!--下面是problem_page.py中的样式-->
+
+{% endblock style %}
+
+
+{% block content %}
+  <div class="content_container">
+    <div class="row">
+      <div class="col-md-8" style="height: 1000px"> 
+        
+        {% block show %}
+        
+        {% endblock show %}
+  
+      </div>
+      
+
+      {% comment %} 右侧面板 {% endcomment %}
+      <div class="col-md-3 fixed_mianban">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">功能中心</h3>
+          </div>
+          <div class="panel-body">
+            <a href="/{{user_id}}/ask/raise">我要提问</a>
+            <a href="#">我要写想法</a>
+          </div>
+        </div>
+
+        <div style="height: 300px; margin-top: 20px;">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="font-weight: bold">推荐话题</h3>
+            </div>
+            <div class="panel-body">
+              <a href="#">学习</a>
+              <a href="#">生活</a>
+              <a href="#">吐槽</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

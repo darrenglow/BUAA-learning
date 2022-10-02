@@ -1,0 +1,550 @@
+{% extends 'daohanglan.html' %}
+
+{% block title %}
+个人主页
+{% endblock title %}
+
+{% block style %}
+.content_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1030px;
+  }
+  
+  .fixed_mianban{
+    position: fixed;
+    right: 215px;
+  }
+  
+  .intro_card{
+    background-color: white;
+    width: 1030px;
+    height: 300px;
+    padding-left: auto;
+    padding-right: auto;
+  }
+  .question_card a{
+    text-decoration: none;
+  }
+  .username{
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .title_color{
+    color: black;
+  }
+  .question_title{
+    font-size:18px;
+    font-weight: 600;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .question_card .question_title a:hover{
+    color: #625199;
+  }
+  
+  .date{
+    float: right;
+    display: inline-block;
+    margin-right: 10px;
+    position:relative;
+    top:20px;
+  }
+  .answer{
+    font-size:15px;
+    padding:  0px 10px;
+  }
+  .answer_color{
+    color:black;
+  }
+  .question_card .answer a:hover{
+    color: grey;
+  }
+  
+  .product-buyer-name {
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2; 
+  }
+  
+  .agreebutton{
+    position: relative
+    bottom: 5px;
+    margin-top:5px;
+    padding-left: 10px;
+    display: inline-block;
+}
+  .touxiang{
+    display: inline-block;
+    height: 168px;
+    width: 168px;
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  
+  .show_card{
+    display: inline-block;
+    width: 830px;
+    background: white;
+    margin-top: 10px;
+    margin-right: 0px;
+  }
+
+  .show_card a div:hover{
+    color: #625199;
+  }
+{% endblock style %}
+
+{% block  content %}
+<div class="content_container intro_card">
+    <div class=" intro_card">
+        <div class="col-xs-4">
+            <img src="../static/touxiang.jpeg" alt="" class="img-circle touxiang" 
+        style="display: inline-block;
+            height: 168px;
+            width: 168px;
+            margin-top: 50px;
+            margin-left: 50px;">
+        </div>
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="col-xs-8 clearfix" style="margin-top: 20px;">
+              <div class="col-xs-4">
+                  <div style="font-weight:bold;">姓名</div> <div style="margin-bottom: 10px;">{{form.name}}</div>
+                  <div style="font-weight:bold">性别</div><div>{{form.gender}}</div>
+              </div>
+              <div class="col-xs-4">
+                  <div style="font-weight:bold">学院</div><div style="margin-bottom: 10px;">{{form.academy}}</div>
+                  <div style="font-weight:bold">邮箱</div><div>{{form.email}}</div>
+              </div>
+          </div>
+          <div class="col-xs-8">
+            <div style="padding:10px 13px">
+              个人介绍<div>{{form.intro}}</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="float: right; margin-right: 25px;">保存修改</button>
+        </form>
+        
+    </div>
+    <div class="col-xs-2">
+      <form method="get" style="display: inline-block">
+        <div class="btn-group-vertical" role="group" style="margin-top: 10px;">
+            <button class="btn btn-default btn-lg" type="submit" name="s" value="ask"><div style="font-weight:bold">我的提问</div></button>
+            <button class="btn btn-default btn-lg" type="submit" name="s" value="ans"><div style="font-weight:bold">我的回答</div></button>
+            <button class="btn btn-default btn-lg" type="submit" name="s" value="agree"><div style="font-weight:bold">我的赞同</div></button>
+            <button class="btn btn-default btn-lg" type="submit" name="s" value="focus"><div style="font-weight:bold">我的关注</div></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="show_card">
+
+        <!--展示问题-->
+        <div id="ppp">
+          {% for problem in problems %}
+          <div style="padding: 5px 20px; border-bottom: 1px solid #f0f2f7;">
+              <div style="width: 650px;display: inline-block;">
+                <div>
+                  <a href="/{{problem.id}}/problem" style="color:black; text-decoration: none; display: inline-block;">
+                    <div class="question_title">{{problem.title}}</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="clearfix" style="display: inline-block;">
+                <button uid="{{problem.id}}" type="button" class="btn btn-danger" style="float: right; margin-top: 10px;">删除</button>
+                <button uid="{{problem.id}}" type="button" class="btn btn-warning" style="float: right; margin-top: 10px; margin-right: 10px;">编辑</button>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+
+        <!--展示回答--> 
+        <div id="aaa">
+          {% for answer in answers %}
+          <div style="padding: 5px 20px; border-bottom: 1px solid #f0f2f7;">
+              <div style="width: 650px;display: inline-block;">
+                <div>
+                  <a href="/{{answer.thisask.id}}/problem" style="color:black; text-decoration: none; display: inline-block;">
+                    <div class="question_title">{{answer.thisask.title}}</div>
+                  </a>
+                </div>
+                <div style="margin-left: 10px;">
+                  {{answer.ans_content}}
+                </div>
+              </div>
+
+              <div class="clearfix" style="display: inline-block;">
+                <button uid="{{answer.id}}" type="button" class="btn btn-danger" style="float: right; margin-top: 10px;">删除</button>
+                <button uid="{{answer.id}}" type="button" class="btn btn-warning" style="float: right; margin-top: 10px; margin-right: 10px;">编辑</button>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!--展示赞同-->
+        <div id="ggg">
+          {% for agree in agrees %}
+          <div style="padding: 5px 20px; border-bottom: 1px solid #f0f2f7;">
+              <div style="width: 650px;display: inline-block;">
+                <div>
+                  <a href="/{{agree.thisask.id}}/problem" style="color:black; text-decoration: none; display: inline-block;">
+                    <div class="question_title">{{agree.thisask.title}}</div>
+                  </a>
+                </div>
+                <div style="margin-left: 10px;">
+                  {{agree.author}}: {{agree.ans_content}}
+                </div>
+              </div>
+
+              <div class="clearfix" style="display: inline-block;">
+                <button uid={{agree.id}} type="button" class="btn btn-danger" style="float: right; margin-top: 10px;">取消赞同</button>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!--关注的问题-->
+        <div id="fff">
+          {% for focus in focuses %}
+          <div style="padding: 5px 20px; border-bottom: 1px solid #f0f2f7;">
+              <div style="width: 650px;display: inline-block;">
+                <div>
+                  {{focus.asker}}提出的
+                  <a href="/{{focus.id}}/problem" style="color:black; text-decoration: none; display: inline-block;">
+                    <div class="question_title">{{focus.title}}</div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="clearfix" style="display: inline-block;">
+                <button uid={{focus.id}} type="button" class="btn btn-danger" style="float: right; margin-top: 10px;">不再关注</button>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+<!-- 删除问题-->
+<div class="modal fade" id="del_ask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4>是否确定删除？</h4>
+      <p>删除后，所有相关的回答也都会被删除</p>
+      <p style="margin-top: 10px; text-align: right;">
+        <button type="button" class="btn btn-danger" id="delete_ask_button">确 认</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- 删除回答 -->
+<div class="modal fade" id="del_ans" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4>是否确定删除？</h4>
+      <p>删除后，将无法恢复你的回答</p>
+      <p style="margin-top: 10px; text-align: right;">
+        <button type="button" class="btn btn-danger" id="delete_ans_button">确 认</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!--不再赞同-->
+<div class="modal fade" id="del_agree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4>是否取消赞同？</h4>
+      <p style="margin-top: 10px; text-align: right;">
+        <button type="button" class="btn btn-danger" id="delete_agree_button">确 认</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!--不再关注-->
+<div class="modal fade" id="del_focus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4>是否不再关注？</h4>
+      <p style="margin-top: 10px; text-align: right;">
+        <button type="button" class="btn btn-danger" id="delete_focus_button">确 认</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 编辑问题-->
+<form method="post">
+{% csrf_token %}
+  <div class="modal fade" id="edit_ask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">编辑问题</h4>
+        </div>
+        <div class="modal-body">
+          <div>问题</div>
+          <input type="text" class="form-control" id="problem_title_edit">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button id="problem_edit_button" type="submit" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!-- 编辑回答 -->
+<div class="modal fade" id="edit_ans" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">编辑回答</h4>
+      </div>
+      <div class="modal-body">
+        <div>回答</div>
+          <input type="text" class="form-control" id="answer_content_edit">
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="answer_edit_button">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock  %}
+
+
+{% block script %}
+<script>
+
+  var DELETE_ID = 0;
+  var EDIT_ID = 0;
+  $(function(){
+    delete_ask();
+    delete_ask_confirm();
+
+    delete_ans();
+    delete_ans_confirm();
+
+    delete_agree();
+    delete_agree_confirm();
+
+    delete_focus();
+    delete_focus_confirm();
+
+    edit_ask();
+    edit_ask_confirm();
+
+    edit_ans();
+    edit_ans_confirm();
+
+  })
+
+  function delete_ask(){
+    var len = $("#ppp .btn-danger").length;
+    $("#ppp .btn-danger").click(function(){
+      $("#del_ask").modal('show');
+      DELETE_ID = $(this).attr("uid");    //将这个删除按钮对应的problem_id存下来
+    })
+  }
+  function delete_ask_confirm(){
+    $("#delete_ask_button").click(function(){
+      $.ajax({
+        url: '/ask/delete',
+        type: "post",
+        data: {
+            problem_id: DELETE_ID
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+
+  function delete_ans(){
+    var len = $("#aaa .btn-danger").length;
+    $("#aaa .btn-danger").click(function(){
+      $("#del_ans").modal('show');
+      DELETE_ID = $(this).attr("uid");
+    })
+  }
+  function delete_ans_confirm(){
+    $("#delete_ans_button").click(function(){
+      $.ajax({
+        url: '/ans/delete',
+        type: "post",
+        data: {
+            answer_id: DELETE_ID
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+
+  function delete_agree(){
+    var len = $("#ggg .btn-danger").length;
+    $("#ggg .btn-danger").click(function(){
+      $("#del_agree").modal('show');
+      DELETE_ID = $(this).attr("uid");
+    })
+  }
+  function delete_agree_confirm(){
+    $("#delete_agree_button").click(function(){
+      $.ajax({
+        url: '/agree/delete',
+        type: "post",
+        data: {
+            agree_id: DELETE_ID,
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+  function delete_focus(){
+    var len = $("#fff .btn-danger").length;
+    $("#fff .btn-danger").click(function(){
+      $("#del_focus").modal('show');
+      DELETE_ID = $(this).attr("uid");
+    })
+  }
+  function delete_focus_confirm(){
+    $("#delete_focus_button").click(function(){
+      $.ajax({
+        url: '/focus/delete',
+        type: "post",
+        data: {
+            focus_id: DELETE_ID,
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+
+  function edit_ask(){
+    $("#ppp .btn-warning").click(function(){
+      $("#edit_ask").modal('show');
+      EDIT_ID = $(this).attr("uid");    //将这个删除按钮对应的problem_id存下来
+      $.ajax({
+        url: '/ask/edit',
+        type: "post",
+        data: {
+            problem_id: EDIT_ID
+        },
+        dataType: "JSON",
+        success: function (res) {
+            $("#problem_title_edit").val(res.problem_title);
+            console.log(res.status);
+        }
+      })
+    })
+  }
+  function edit_ask_confirm(){
+    $("#problem_edit_button").click(function(){
+      $.ajax({
+        url: '/ask/edit/confirm',
+        type: "post",
+        data: {
+            edit_id: EDIT_ID,
+            problem_content: $("#problem_title_edit").val(),
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+  function edit_ans(){
+    $("#aaa .btn-warning").click(function(){
+      $("#edit_ans").modal('show');
+      EDIT_ID = $(this).attr("uid");    //将这个删除按钮对应的problem_id存下来
+      $.ajax({
+        url: '/ans/edit',
+        type: "post",
+        data: {
+            answer_id: EDIT_ID
+        },
+        dataType: "JSON",
+        success: function (res) {
+            $("#answer_content_edit").val(res.answer_content);
+            console.log(res.status);
+        }
+      })
+    })
+  }
+  function edit_ans_confirm(){
+    $("#answer_edit_button").click(function(){
+      $.ajax({
+        url: '/ans/edit/confirm',
+        type: "post",
+        data: {
+            edit_id: EDIT_ID,
+            answer_content: $("#answer_content_edit").val(),
+        },
+        dataType: "JSON",
+        success: function (res) {
+            console.log(res);
+            location.reload();
+        }
+      })
+    })
+  }
+
+</script>
+
+{% endblock script %}

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
+    <style>
+      .navbar{
+        border-radius: 0;
+      }
+      .navbar-brand{
+        padding: 5px 25px 5px 5px;
+      }
+
+      
+    {% block style %}
+
+    {% endblock style %}
+    </style>
+</head>
+<body style="background: #F6F6F6">
+  <div class="navbar navbar-default" style="background-color: white">
+    <div class="container clearfix">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header clearfix">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index" style="display: inline-block; margin-left: -40px;"><img alt="Brand" src="{% static 'icon.png' %}" style="height:34px; width:64px;padding-bottom:0px"></a>
+      </div>
+  
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active" id="changeclass"><a href="/index/">首页<span class="sr-only">(current)</span></a></li>
+          <li id="changeclass2"><a href="/problem/set">我来回答</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/logout/">注销</a></li>
+          <li><a href="/{{request.session.info.id}}/homepage">{{ request.session.info.name }}</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" method="get">
+            <div class="form-group">
+              <input type="text" name="q" class="form-control" placeholder="在当前页面查询" value={{search_data}}>
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+  {% block content %}
+  {% endblock content %}
+
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.js' %}"></script>
+    {% block script %}{% endblock script %}
+    </body>
+</html>

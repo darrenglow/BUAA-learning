@@ -1,0 +1,32 @@
+{% extends 'daohanglan.html' %}
+
+{% block title %}
+提问
+{% endblock title %}
+
+{% block style %}
+    .content_container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
+  
+    .ask_button{
+        margin-top:10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+{% endblock style %}
+
+{% block content %}
+<div class='content_container clearfix'>
+    <form method='POST'>
+        {% csrf_token %}
+        {% for field in form %}
+        <div style="margin-top: 20px; font-weight: bold">{{field.label}}:</div>
+        {{field}}
+        {% endfor %}
+        <button type="submit" class="btn btn-success" style="float: right; margin-top: 20px; margin-right: 20px;">提交问题</button>
+    </form>
+</div>
+{% endblock content %}

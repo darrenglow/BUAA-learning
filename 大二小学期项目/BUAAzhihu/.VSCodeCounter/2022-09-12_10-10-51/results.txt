@@ -1,0 +1,126 @@
+Date : 2022-09-12 10:10:51
+Directory : e:\amaterials\program\Codefield\BUAAzhihu
+Total : 76 files,  27274 codes, 2407 comments, 3249 blanks, all 32930 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          6 |      9,737 |         37 |          2 |      9,776 |
+| JavaScript |          4 |      8,660 |      2,128 |      2,694 |     13,482 |
+| XML        |          2 |      2,959 |          0 |          1 |      2,960 |
+| SCSS       |         14 |      1,758 |         44 |         48 |      1,850 |
+| Less       |         14 |      1,758 |         44 |         48 |      1,850 |
+| HTML       |         11 |      1,561 |         15 |        208 |      1,784 |
+| Python     |         24 |        832 |        139 |        248 |      1,219 |
+| Markdown   |          1 |          9 |          0 |          0 |          9 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                           | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                              |         76 |     27,274 |      2,407 |      3,249 |     32,930 |
+| BUAAzhihu                                                                                                                      |         75 |     27,265 |      2,407 |      3,249 |     32,921 |
+| BUAAzhihu\BUAAzhihu                                                                                                            |          5 |        111 |         59 |         51 |        221 |
+| BUAAzhihu\app1                                                                                                                 |         69 |     27,139 |      2,345 |      3,193 |     32,677 |
+| BUAAzhihu\app1\migrations                                                                                                      |          9 |        169 |          8 |         50 |        227 |
+| BUAAzhihu\app1\static                                                                                                          |         40 |     24,872 |      2,253 |      2,793 |     29,918 |
+| BUAAzhihu\app1\static\js                                                                                                       |          1 |      6,895 |      1,911 |      2,076 |     10,882 |
+| BUAAzhihu\app1\static\plugins                                                                                                  |         39 |     17,977 |        342 |        717 |     19,036 |
+| BUAAzhihu\app1\static\plugins\bootstrap-3.4.1                                                                                  |          8 |      9,462 |        241 |        618 |     10,321 |
+| BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\css                                                                              |          4 |      7,409 |         24 |          0 |      7,433 |
+| BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\fonts                                                                            |          1 |        288 |          0 |          0 |        288 |
+| BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\js                                                                               |          3 |      1,765 |        217 |        618 |      2,600 |
+| BUAAzhihu\app1\static\plugins\font-awesome-4.7.0                                                                               |         31 |      8,515 |        101 |         99 |      8,715 |
+| BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\css                                                                           |          2 |      2,328 |         13 |          2 |      2,343 |
+| BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\fonts                                                                         |          1 |      2,671 |          0 |          1 |      2,672 |
+| BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less                                                                          |         14 |      1,758 |         44 |         48 |      1,850 |
+| BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss                                                                          |         14 |      1,758 |         44 |         48 |      1,850 |
+| BUAAzhihu\app1\templates                                                                                                       |         11 |      1,561 |         15 |        208 |      1,784 |
+| BUAAzhihu\app1\utils                                                                                                           |          2 |         76 |         56 |         23 |        155 |
+| BUAAzhihu\app1\views                                                                                                           |          2 |        392 |          9 |        102 |        503 |
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                       | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\BUAAzhihu\__init__.py                                                      | Python     |          0 |          0 |          1 |          1 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\BUAAzhihu\asgi.py                                                          | Python     |          4 |          8 |          5 |         17 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\BUAAzhihu\settings.py                                                      | Python     |         74 |         28 |         34 |        136 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\BUAAzhihu\urls.py                                                          | Python     |         29 |         15 |          6 |         50 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\BUAAzhihu\wsgi.py                                                          | Python     |          4 |          8 |          5 |         17 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\__init__.py                                                           | Python     |          0 |          0 |          1 |          1 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\admin.py                                                              | Python     |         13 |          2 |          5 |         20 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\apps.py                                                               | Python     |          4 |          0 |          3 |          7 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0001_initial.py                                            | Python     |         52 |          1 |          7 |         60 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0002_user_list_academy.py                                  | Python     |         12 |          1 |          6 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0003_alter_user_list_name.py                               | Python     |         12 |          1 |          6 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0004_auto_20220817_1455.py                                 | Python     |         31 |          1 |          6 |         38 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0005_auto_20220817_2235.py                                 | Python     |         20 |          1 |          6 |         27 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0006_comment_list.py                                       | Python     |         18 |          1 |          6 |         25 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0007_ans_list_see_num.py                                   | Python     |         12 |          1 |          6 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\0008_ask_list_ask_kind.py                                  | Python     |         12 |          1 |          6 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\migrations\__init__.py                                                | Python     |          0 |          0 |          1 |          1 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\models.py                                                             | Python     |         51 |          1 |          6 |         58 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\js\jquery-3.6.0.js                                             | JavaScript |      6,895 |      1,911 |      2,076 |     10,882 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\css\bootstrap-theme.css                | CSS        |        581 |          6 |          0 |        587 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\css\bootstrap-theme.min.css            | CSS        |          1 |          5 |          0 |          6 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\css\bootstrap.css                      | CSS        |      6,826 |          8 |          0 |      6,834 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\css\bootstrap.min.css                  | CSS        |          1 |          5 |          0 |          6 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\fonts\glyphicons-halflings-regular.svg | XML        |        288 |          0 |          0 |        288 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\js\bootstrap.js                        | JavaScript |      1,752 |        211 |        618 |      2,581 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\js\bootstrap.min.js                    | JavaScript |          1 |          5 |          0 |          6 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\bootstrap-3.4.1\js\npm.js                              | JavaScript |         12 |          1 |          0 |         13 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\css\font-awesome.css                | CSS        |      2,327 |         10 |          1 |      2,338 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\css\font-awesome.min.css            | CSS        |          1 |          3 |          1 |          5 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg       | XML        |      2,671 |          0 |          1 |      2,672 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\animated.less                  | Less       |         28 |          2 |          5 |         35 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\bordered-pulled.less           | Less       |         17 |          3 |          6 |         26 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\core.less                      | Less       |          8 |          2 |          3 |         13 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\fixed-width.less               | Less       |          4 |          2 |          1 |          7 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\font-awesome.less              | Less       |         13 |          4 |          2 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\icons.less                     | Less       |        786 |          2 |          2 |        790 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\larger.less                    | Less       |          9 |          3 |          2 |         14 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\list.less                      | Less       |         16 |          2 |          2 |         20 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\mixins.less                    | Less       |         41 |         10 |         10 |         61 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\path.less                      | Less       |         11 |          3 |          2 |         16 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\rotated-flipped.less           | Less       |         12 |          4 |          5 |         21 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\screen-reader.less             | Less       |          2 |          2 |          2 |          6 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\stacked.less                   | Less       |         17 |          2 |          2 |         21 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\less\variables.less                 | Less       |        794 |          3 |          4 |        801 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_animated.scss                 | SCSS       |         28 |          2 |          5 |         35 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss          | SCSS       |         17 |          3 |          6 |         26 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_core.scss                     | SCSS       |          8 |          2 |          3 |         13 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_fixed-width.scss              | SCSS       |          4 |          2 |          1 |          7 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_icons.scss                    | SCSS       |        786 |          2 |          2 |        790 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_larger.scss                   | SCSS       |          9 |          3 |          2 |         14 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_list.scss                     | SCSS       |         16 |          2 |          2 |         20 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_mixins.scss                   | SCSS       |         41 |         10 |         10 |         61 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_path.scss                     | SCSS       |         11 |          3 |          2 |         16 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss          | SCSS       |         12 |          4 |          5 |         21 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_screen-reader.scss            | SCSS       |          2 |          2 |          2 |          6 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_stacked.scss                  | SCSS       |         17 |          2 |          2 |         21 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\_variables.scss                | SCSS       |        794 |          3 |          4 |        801 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\static\plugins\font-awesome-4.7.0\scss\font-awesome.scss              | SCSS       |         13 |          4 |          2 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\answer_page.html                                            | HTML       |        255 |          0 |         32 |        287 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\ask_raise.html                                              | HTML       |         28 |          0 |          5 |         33 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\daohanglan.html                                             | HTML       |         60 |          1 |          6 |         67 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\home_layout.html                                            | HTML       |         62 |          1 |         15 |         78 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\homepage.html                                               | HTML       |        247 |          1 |         36 |        284 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\layout.html                                                 | HTML       |         17 |          0 |          2 |         19 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\login.html                                                  | HTML       |         58 |          1 |          6 |         65 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\problem_page.html                                           | HTML       |        180 |          0 |         18 |        198 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\problem_set.html                                            | HTML       |        128 |          1 |         23 |        152 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\register.html                                               | HTML       |         48 |          0 |          3 |         51 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\templates\self_homepage.html                                          | HTML       |        478 |         10 |         62 |        550 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\tests.py                                                              | Python     |          1 |          1 |          2 |          4 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\utils\encrypt.py                                                      | Python     |          6 |          0 |          1 |          7 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\utils\pagination.py                                                   | Python     |         70 |         56 |         22 |        148 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\views\index.py                                                        | Python     |        176 |          2 |         46 |        224 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\app1\views\user.py                                                         | Python     |        216 |          7 |         56 |        279 |
+| e:\amaterials\program\Codefield\BUAAzhihu\BUAAzhihu\manage.py                                                                  | Python     |         15 |          3 |          5 |         23 |
+| e:\amaterials\program\Codefield\BUAAzhihu\note.md                                                                              | Markdown   |          9 |          0 |          0 |          9 |
+| Total                                                                                                                          |            |     27,274 |      2,407 |      3,249 |     32,930 |
++--------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

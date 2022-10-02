@@ -1,0 +1,151 @@
+{% extends 'daohanglan.html' %}
+
+{% block title %}
+我来回答
+{% endblock title %}
+
+{% block style %}
+  .content_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1030px;
+  }
+
+  .fixed_mianban{
+    position: fixed;
+    right: 215px;
+  }
+
+  .question_card{
+    background-color: white;
+    width: 100%;
+    height: 120px;
+    padding-left: auto;
+    padding-right: auto;
+    margin-top: 0px;
+    border-bottom: 1px solid #f0f2f7;
+  }
+  .question_card a{
+    text-decoration: none;
+  }
+  .username{
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .title_color{
+    color: black;
+  }
+  .question_title{
+    font-size:18px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 5px 20px;
+  }
+
+  .question_card .question_title a:hover{
+    color: #625199;
+  }
+
+  .date{
+    float: right;
+    display: inline-block;
+    margin-right: 10px;
+    position:relative;
+    top:20px;
+  }
+  .answer{
+    font-size:15px;
+  }
+
+  .col-md-3 a{
+    text-decoration: none;
+    font-size: 25px; 
+    color: #238E68; 
+    font-weight: bold
+  }
+  
+  #tiwen:hover{
+    color: #238000;
+  }
+  
+  .col-md-3 button{
+    background-color: #238E68;
+    color: white;
+    font-weight: bold;
+  }
+  <!--下面是problem_page.py中的样式-->
+
+{% endblock style %}
+
+
+{% block content %}
+  <div class="content_container">
+    <div class="row">
+      <div class="col-md-8" style="height: 1000px"> 
+        
+        {% for problem in problems %}
+        <div class="question_card clearfix">
+            <a href="/{{problem.id}}" style="color:black" class="username">
+              <i class="fa fa-user-circle" aria-hidden="true"></i> 
+              {{problem.asker}} 的提问
+            </a>
+            <div class="question_title">
+                <a href="/{{ problem.id }}/problem" class="title_color">
+                    {{problem.title}}
+                </a>
+            </div>
+            <div style="color:black" class="date">{{problem.ask_time|date:"Y-m-d"}}</div>
+            <i class="fa fa-calendar date" aria-hidden="true"></i>
+          </div>
+        {% endfor %}
+        <ul class="pagination">
+          {{ page_string }}
+        </ul>
+      </div>
+      
+
+      {% comment %} 右侧面板 {% endcomment %}
+      <div class="col-md-3 fixed_mianban">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight: bold;">功能中心</h3>
+          </div>
+          <div class="panel-body">
+            <a href="/{{user_id}}/ask/raise" id="tiwen">我要提问</a>
+          </div>
+        </div>
+
+        <div style="height: 300px; margin-top: 20px;">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="font-weight: bold;">推荐话题</h3>
+            </div>
+            <form method='get'>
+              <div class="panel-body">
+                <button type="submit" class="btn btn-default" name="tag" value="shenghuo">生活</button>
+                <button type="submit" class="btn btn-default" name="tag" value="xuexi">学习</button>
+                <button type="submit" class="btn btn-default" name="tag" value="tucao">吐槽</button>
+                <button type="submit" class="btn btn-default" name="tag" value="xuanke">选课</button>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}
+
+{% block script %}
+<script>
+  $(function(){
+    $("#changeclass").removeClass();
+    $("#changeclass2").addClass("active");
+  })
+</script>
+{% endblock script %}
+
+
+

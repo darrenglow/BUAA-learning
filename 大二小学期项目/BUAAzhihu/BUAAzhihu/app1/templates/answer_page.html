@@ -1,0 +1,286 @@
+{% extends 'daohanglan.html' %}
+
+{% block title %}
+回答界面
+{% endblock title %}
+
+{% block style %}
+.content_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1030px;
+  }
+  
+  .fixed_mianban{
+    position: fixed;
+    right: 215px;
+  }
+  
+  .question_card{
+    background-color: white;
+    width: 100%;
+    padding-left: auto;
+    padding-right: auto;
+    margin-top: 0px;
+  }
+  .question_card a{
+    text-decoration: none;
+  }
+  .username{
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+  .username_ans{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .title_color{
+    color: black;
+  }
+  .question_title{
+    font-size:25px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .question_card .question_title a:hover{
+    color: #625199;
+  }
+  
+  .date{
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .answer{
+    font-size:15px;
+    padding:  0px 10px;
+  }
+  .answer_color{
+    color:black;
+  }
+  .question_card .answer a:hover{
+    color: grey;
+  }
+  
+  .product-buyer-name {
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2; 
+  }
+  
+  .question_intro{
+    font-size:15px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding: 10px 10px 5px 10px;
+  }
+
+  .agreebutton{
+    display: inline-block;
+    vertical-align: center;
+    margin-left: 110px;
+    margin-bottom: 10px;
+  } 
+
+  .comment_container{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .comment_card{
+    margin-top: 25px;
+    width: 100%;
+    background-color: white;
+  }
+  .comment{
+    padding: 20px 20px;
+    height: 120px;
+  }
+
+  .col-md-3 a{
+    text-decoration: none;
+    font-size: 25px; 
+    color: #238E68; 
+    font-weight: bold
+  }
+  
+  #tiwen:hover{
+    color: #238000;
+  }
+  
+  .col-md-3 button{
+    background-color: #238E68;
+    color: white;
+    font-weight: bold;
+  }
+{% endblock style %}
+
+
+{% block content %}
+<div class="content_container">
+    <div class="row">
+      <div class="col-md-8" style="height: 1000px"> 
+
+        <div class="question_card clearfix">
+          <div class="col-md-12">
+            <i class="fa fa-user-circle" aria-hidden="true" style="margin-left: 10px"></i>
+            <div class="username">
+              {{problem.asker}} 于
+            </div>
+            <div class="date">
+              {{problem.ask_time|date:"Y-m-d"}} 提出
+            </div>
+            <div class="question_title">
+              <a href="/{{problem.id}}/problem" style="color:black">{{problem.title}}</a>
+            </div>
+            <div class="question_intro">
+              补充描述：<div style="color:black">{{problem.ask_intro}}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="question_card clearfix" style="position:relative; margin-top:10px;">
+            <div class="col-xs-2">
+                <div><i class="fa fa-user-circle fa-5x" aria-hidden="true" style="margin-left: 10px; margin-top:10px; display:inline-block;"></i></div>
+                <div class="username_ans" style="margin-left: auto; margin-right: auto">{{answer.author}}</div>
+            </div>
+            <div class="col-xs-10 question_intro">
+                <div style="color:black; padding-right: 10px">{{answer.ans_content}}</div>
+            </div>
+          </div>
+
+          <div class="question_card clearfix">
+            <div class="agreebutton"><button type="button" class="btn btn-default" id="agree_button">赞 同 {{vote_num}}</button></div>
+            
+
+            <div class="date" style="float: right; margin-top: 10px; margin-right: 10px;">
+                {{answer.ans_time|date:"Y-m-d"}}
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px;" class="clearfix">
+            <form method="POST">
+              {% csrf_token %}
+              <textarea name="pinglun" id="pinglunkuang" cols="90" rows="3" placeholder="请输入你的评论" style="resize:none; margin-left: 5px;"></textarea>
+              <button type="submit" class="btn btn-success" id="sub_btn" style="margin-top:5px; margin-right:10px; float: right;">提 交</button>
+            </form>
+        </div>
+
+        <div class="comment_container">
+            <div class="comment_card">
+                <div style="font-weight:bold; font-size: 20px; border-bottom:1px solid black; margin-left: 10px;">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                    评论 {{comment_num}}条
+                </div>
+                {% for comment in comments %}
+                <div class="comment" style="position: relative">
+                    <div class="col-xs-1"><i class="fa fa-user fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-xs-11">
+                        <div style="font-weight: bold;">{{comment.commenter}}</div>
+                        <div>{{comment.comment_content}}</div>
+                        <div style="position: absolute; left: 13px; font-size: 10px; color: #999999">
+                            {{comment.comment_time}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+      </div>
+      
+
+
+      {% comment %} 右侧面板 {% endcomment %}
+      <div class="col-md-3 fixed_mianban">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight: bold;">功能中心</h3>
+          </div>
+          <div class="panel-body">
+            <a href="/{{user_id}}/ask/raise" id="tiwen">我要提问</a>
+          </div>
+        </div>
+
+        <div style="height: 300px; margin-top: 20px;">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="font-weight: bold;">推荐话题</h3>
+            </div>
+            <div class="panel-body">
+              <a href="/index/?tag=shenghuo"><button class="btn btn-default">生活</button></a>
+              <a href="/index/?tag=xuexi"><button class="btn btn-default">学习</button></a>
+              <a href="/index/?tag=tucao"><button class="btn btn-default">吐槽</button></a>
+              <a href="/index/?tag=xuanke"><button class="btn btn-default">选课</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <input type="hidden" value="{{status}}" id="agree_status" />
+{% endblock content %}  
+
+{% block script %}
+<script>
+
+    var vote_num = {{vote_num}};
+
+    $(function(){
+        bind_button();
+        if($("#agree_status").val() == "True"){
+          $("#agree_button").attr("class", "btn btn-primary");
+          $("#agree_button").text("已赞同 " + vote_num);
+        }
+        else{
+          $("#agree_button").attr("class", "btn btn-default");
+          $("#agree_button").text("赞 同 " + vote_num);
+        }
+    })
+
+    function bind_button() {
+        $("#agree_button").click(function(){
+            if($("#agree_button").text()[0] == '赞'){
+              $("#agree_button").attr("class", "btn btn-primary");
+              vote_num = vote_num + 1
+              $("#agree_button").text("已赞同 " + vote_num);
+              $.ajax({
+                  url: '/answer/agree/',
+                  type: "post",
+                  data: {
+                      answer_id: {{answer.id}}
+                  },
+                  dataType: "JSON",
+                  success: function (res) {
+                      console.log(res);
+                      //location.reload();
+                  }
+              })
+            }
+            else{
+              $("#agree_button").attr("class", "btn default");
+              vote_num = vote_num - 1;
+              $("#agree_button").text("赞 同 " + vote_num);
+              $.ajax({
+                url: '/answer/agree/cancel/',
+                type: "post",
+                data: {
+                    answer_id: {{answer.id}}
+                },
+                dataType: "JSON",
+                success: function (res) {
+                    console.log(res);
+                    //location.reload();
+                }
+              })
+            }
+        })
+    }
+</script>
+{% endblock script %}
